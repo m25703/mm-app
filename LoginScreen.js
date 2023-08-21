@@ -14,8 +14,8 @@ const LoginScreen = ({ navigation }) => {
     // Simulate successful login for demo purposes
     const isAuthenticated = true;
     if (isAuthenticated) {
-      // Navigate to the home screen upon successful login
-      navigation.navigate('Home');
+      // Navigate to the Dashboard screen upon successful login
+      navigation.navigate('Dashboard');
     }
   };
 
