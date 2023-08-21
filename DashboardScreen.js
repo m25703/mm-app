@@ -11,8 +11,8 @@ const DashboardScreen = () => {
 
     const fetchUserRole = async () => {
       // const fetchedUserRole = 'admin';
-      const fetchedUserRole = 'user';
-      // const fetchedUserRole = 'manager';
+      // const fetchedUserRole = 'user';
+      const fetchedUserRole = 'manager';
       // const fetchedUserRole = 'guest';
       setUserRole(fetchedUserRole);
     };
@@ -25,9 +25,9 @@ const DashboardScreen = () => {
     switch (role) {
       case 'admin':
         return [
-          { name: 'star-outline', description: 'Ratings', screen: 'RatingsScreen' },
-          { name: 'chatbubble-ellipses-outline', description: 'View Feedback', screen: 'ViewFeedbackScreen' },
-          { name: 'alert-circle-outline', description: 'Complaints', screen: 'ComplaintsScreen' },
+          { name: 'star-outline', description: 'Ratings', screen: 'Ratings' },
+          { name: 'chatbubble-ellipses-outline', description: 'View Feedback', screen: 'View Feedback' },
+          { name: 'alert-circle-outline', description: 'Complaints', screen: 'Complaints' },
           { name: 'settings-outline', description: 'Settings', screen: 'Settings' },
         ];
       case 'user':
@@ -35,24 +35,24 @@ const DashboardScreen = () => {
           { name: 'restaurant-outline', description: 'View Menu', screen: 'Menu' },
           { name: 'calendar-outline', description: 'Attendance', screen: 'Attendance' },
           { name: 'card-outline', description: 'Payments', screen: 'Payments' },
-          { name: 'star-outline', description: 'Ratings', screen: 'RatingsScreen' },
+          { name: 'star-outline', description: 'Ratings', screen: 'Ratings' },
           { name: 'notifications-outline', description: 'Notifications', screen: 'Notifications' },
-          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'OngoingMealScreen' },
+          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'Ongoing Meal' },
           { name: 'settings-outline', description: 'Settings', screen: 'Settings' },
         ];
       case 'manager':
         return [
           { name: 'restaurant-outline', description: 'View Menu', screen: 'Menu' },
           { name: 'card-outline', description: 'Payments', screen: 'Payments' },
-          { name: 'star-outline', description: 'Ratings', screen: 'RatingsScreen' },
-          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'OngoingMealScreen' },
-          { name: 'megaphone-outline', description: 'Create Announcement', screen: 'CreateAnnouncementScreen' },
+          { name: 'star-outline', description: 'Ratings', screen: 'Ratings' },
+          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'Ongoing Meal' },
+          { name: 'megaphone-outline', description: 'Create Announcement', screen: 'Create Announcement' },
           { name: 'settings-outline', description: 'Settings', screen: 'Settings' },
         ];
       case 'guest':
         return [
           { name: 'restaurant-outline', description: 'View Menu', screen: 'Menu' },
-          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'OngoingMealScreen' },
+          { name: 'fast-food-outline', description: 'Ongoing Meal', screen: 'Ongoing Meal' },
         ];
       default:
         return [];

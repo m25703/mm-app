@@ -1,7 +1,9 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons'; 
 
 const MenuScreen = () => {
+  const [expandedCategories, setExpandedCategories] = useState({});
   const days = {
     "Monday": {
       "Breakfast": ["Poha", "Sev / Namkeen", "Boiled Sweet Corn", "Omelette", "Banana", "Corn Flakes", "BBJ / Pickle", "Coffee / Bournvita / Milk"],
@@ -45,22 +47,46 @@ const MenuScreen = () => {
       "Snacks": ["Pakoda", "Green Chutney", "Banana", "BBJ / Tea / Coffee"],
       "Dinner": ["Veg Pulao", "Raita", "Green Chawli Subzi", "Mix Veg Curry", "Plain Roti / Fulka Roti", "Green Chilli / Lemon Slices", "Salad / Papad / Pickle", "Kala Jamun"]
     }
-  }
-  ;
-
+  };
   const getCurrentDayMenu = () => {
     const currentDayIndex = new Date().getDay();
     const currentDayName = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][currentDayIndex];
-    console.log(currentDayName, currentDayIndex);
     return days[currentDayName];
   };
 
+
   const currentDayMenu = getCurrentDayMenu();
+
+  const toggleCategory = (category) => {
+    setExpandedCategories(prevState => ({
+      ...prevState,
+      [category]: !prevState[category]
+    }));
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
       {Object.keys(currentDayMenu).map((mealType, index) => (
-        <MenuDay key={index} day={mealType} meals={currentDayMenu[mealType]} />
+        <View key={index} style={styles.dayContainer}>
+          <TouchableOpacity
+            onPress={() => toggleCategory(mealType)}
+            style={styles.dayHeader}
+          >
+            <Text style={styles.dayHeaderText}>{mealType}</Text>
+            <Icon
+              name={expandedCategories[mealType] ? 'ios-arrow-up' : 'ios-arrow-down'}
+              size={20}
+              color="#333"
+            />
+          </TouchableOpacity>
+          {expandedCategories[mealType] && (
+            <View>
+              {currentDayMenu[mealType].map((meal, mealIndex) => (
+                <MealItem key={mealIndex} item={meal} />
+              ))}
+            </View>
+          )}
+        </View>
       ))}
     </ScrollView>
   );
@@ -105,6 +131,15 @@ const styles = StyleSheet.create({
   mealText: {
     fontSize: 16,
   },
+  dayHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 5,
+  },
+  dayHeaderText: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginRight: 10,
+  },
 });
-
 export default MenuScreen;
