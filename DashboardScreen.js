@@ -10,9 +10,9 @@ const DashboardScreen = () => {
     // place API call to get the user role
 
     const fetchUserRole = async () => {
-      // const fetchedUserRole = 'admin';
+      const fetchedUserRole = 'admin';
       // const fetchedUserRole = 'user';
-      const fetchedUserRole = 'manager';
+      // const fetchedUserRole = 'manager';
       // const fetchedUserRole = 'guest';
       setUserRole(fetchedUserRole);
     };

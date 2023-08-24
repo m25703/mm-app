@@ -7,7 +7,6 @@ const CreateAnnouncementScreen = () => {
   const [notification, setNotification] = useState('');
 
   const handleAnnouncementSubmit = () => {
-    // You can implement your logic here to submit the announcement
     if (announcementText.trim() !== '') {
       setNotification('Announcement created successfully');
       setAnnouncementText('');

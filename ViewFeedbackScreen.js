@@ -5,7 +5,6 @@ const ViewFeedbackScreen = () => {
   const [feedbackList, setFeedbackList] = useState([]);
 
   useEffect(() => {
-    // Simulating fetching feedback data
     const fetchedFeedback = [
         {
             id: '1',
